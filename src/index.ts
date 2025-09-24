@@ -15,13 +15,14 @@ const main = async () => {
         const app: Application = express();
         app.use(cors())
         app.use(express.json());
-        app.use(express.static('static')); //servir arquivos
+        app.use(express.urlencoded())
+
+        //servir arquivos
+        app.use(express.static('static')); 
 
         // Inicializa ORM
         await initORM();
-
-        // Usa middleware do MikroORM para contexto por request
-        app.use(ormMiddleware);
+        app.use(ormMiddleware);// Usa middleware do MikroORM para contexto por request
 
         // Usa as rotas
         app.use(router);
