@@ -1,76 +1,39 @@
-//esenciais
-import express from "express";
+import "reflect-metadata";
+import "dotenv/config"
+import express, { Application } from "express";
 import cors from "cors";
-import router from "./router";
+import router from "@/router";
 
-//global e env
-import 'dotenv/config';
-import './global/types'; 
+import { initORM, ormMiddleware } from "./databases/mikro";
+import '@/global/types'
 
-import { TokenGenerator } from "@/utils/tokenGenerator";
-import { RequestContext } from "@mikro-orm/core";
-import { ormMiddleware, initORM } from '@/databases/mikro'
-let server;
+const PORT = process.env.PORT
 
-async function main() {
-    //esenciais
-    const app = express();
-    app.use(cors)
-    app.use(express.json());
-    app.use(express.static('public'));
-    
-    //Orm methods
-    await initORM
-    app.use(ormMiddleware);
+const main = async () => {
+    try {
+        // Cria app Express e os middlewares essenciais
+        const app: Application = express();
+        app.use(cors)
+        app.use(express.json());
+        app.use(express.static('static')); //servir arquivos
 
-    app.use(async (req: request, res: response, next) => {
-        console.log(`Request Method: ${req.method}, URL:${req.path}`);
+        // Inicializa ORM
+        await initORM();
 
-        //   let routesIgnore = [
-        //     '/login',
-        //   ]
+        // Usa middleware do MikroORM para contexto por request
+        app.use(ormMiddleware);
 
-        //   // Check if route should be ignored
-        //   if (routesIgnore.some(route => req.path.startsWith(route))) {
-        //     next()
-        //     return;
-        //   }
+        // Usa as rotas
+        app.use(router);
 
-        //   // --------------------- 
-        //   // Verify token for protected routes
-        //   const token = req.headers.authorization?.split(' ')[1];
+        // Sobe servidor
+        app.listen(PORT, () => {
+            console.log(`✅ Server is running on http://localhost:${PORT}`);
+        });
+    } catch (err) {
+        console.error("❌ Erro ao iniciar servidor:", err);
+        process.exit(1);
+    }
+};
 
-        //   if (token) {
-        //     const isValid = await TokenGenerator.verifyToken(token, false);
-
-        //     if (isValid) {
-        //       console.log(`Token valid - proceeding to route`);
-        //       console.log(`---------------------------------`);
-        //       next()
-        //       return;
-        //     }
-        //     console.log(`Token INVALID - rejecting request`);
-        //     console.log(`---------------------------------`);
-        //     return;
-        //   } else {
-        //     console.log(`NO TOKEN - rejecting request`);
-        //   }
-
-        //   console.log(`=== AUTH REJECTED ===`);
-        //   res.status(401).json({ success: false, message: 'Token expired!', logout: true })
-        //   return;
-    })
-
-
-    //manter router no final
-    app.use(router);
-    // Middleware
-    server = app.listen(process.env.PORT, () => {
-        //never change the port number 
-        // cause nginx is configured to listen on this port
-        console.log(`Server is running on port ${process.env.PORT}`);
-    });
-}
-main()
-
-module.exports = server
+main();

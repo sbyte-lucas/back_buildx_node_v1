@@ -5,8 +5,8 @@ import bcrypt from "bcryptjs";
 export default class Authentication {
     static async login(req: request, res: response): Promise<void> {
         const { email, password } = req.body;
+        console.log(email)
         // Verifica se o usuario existe
-    
         const passwordFromDb = await global.em.findOneOrFail(
             User,
             { email: email },

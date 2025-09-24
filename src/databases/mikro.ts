@@ -4,16 +4,23 @@ import express from 'express';
 
 // Variavel de instancia 
 let orm: MikroORM<MySqlDriver>;
+const {
+  MYSQL_NAME,
+  MYSQL_USER,
+  MYSQL_PASSWORD, 
+  MYSQL_HOST, 
+  MYSQL_PORT
+} = process.env
 
 // Objeto sem tipo para config 
 const ormConfig = {
     entities: ['./dist/entities'], // path for built JS files
     entitiesTs: ['./src/entities'], // path for TS files in dev mode
-    dbName: process.env.MYSQL_NAME,
-    user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD,
-    host: process.env.MYSQL_HOST,
-    port: Number(process.env.MYSQL_PORT),
+    dbName: MYSQL_NAME,
+    user: MYSQL_USER,
+    password: MYSQL_PASSWORD,
+    host: MYSQL_HOST,
+    port: Number(MYSQL_PORT),
     driver: MySqlDriver, //isso aqui e importante 
 };
 
