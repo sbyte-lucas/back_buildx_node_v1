@@ -1,0 +1,46 @@
+{
+  "name": "buildx-node-v1",
+  "version": "1.0.0",
+  "description": "Service buildx-node-v1",
+  "main": "./src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc --build && tsc-alias",
+    "start": "node ./dist/index.js",
+    "set:local": "npm install -g npm ts-node typescript nodemon && npm install",
+    "dev": "nodemon -r tsconfig-paths/register",
+    "migration:create": "npx mikro-orm migration:create",
+    "migration:up": "npx mikro-orm migration:up",
+    "migration:down": "npx mikro-orm migration:down",
+    "schema:update": "npx mikro-orm schema:update --run",
+    "migrate": "npm run migration:create && npm run migration:up && npm run schema:update"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@mikro-orm/core": "^6.5.5",
+    "@mikro-orm/migrations": "^6.5.5",
+    "@mikro-orm/mysql": "^6.5.5",
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "@mikro-orm/cli": "^6.5.4",
+    "@types/cookie-parser": "^1.4.9",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^24.5.2",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "tsc-alias": "^1.8.16",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.9.2"
+  }
+}
