@@ -21,7 +21,8 @@ const routes: Route[] = [
 
     //Chaves_de_para
     { method: 'post', path: '/bx/chaves-de-para/', handler: ChavesDePara.insert},
-    { method: 'put', path: '/bx/chaves-de-para/', handler: ChavesDePara.update},
+    { method: 'put', path: '/bx/chaves-de-para/single/', handler: ChavesDePara.update},
+    { method: 'delete', path: '/bx/chaves-de-para/single/:chaveDeParaId', handler: ChavesDePara.delete},
 ]
 
 for (const route of routes) {
