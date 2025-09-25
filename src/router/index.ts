@@ -4,6 +4,7 @@ const router = Router()
 /* -----import controllers----- */
 
 import Chaves from '@/controllers/Chaves'
+import ChavesDePara from '@/controllers/ChavesDePara'
 import Authentication from "@/controllers/Authentication";
 /* -------- */
 
@@ -14,7 +15,13 @@ const routes: Route[] = [
 
     //Chaves
     { method: 'get', path: '/bx/chaves', handler: Chaves.get},
-    { method: 'get', path: '/bx/chaves/:codigo', handler: Chaves.retrieve}
+    { method: 'post', path: '/bx/chaves/', handler: Chaves.insert},
+    { method: 'put', path: '/bx/chaves/:codigo', handler: Chaves.update},
+    { method: 'get', path: '/bx/chaves/:codigo', handler: Chaves.retrieve},
+
+    //Chaves_de_para
+    { method: 'post', path: '/bx/chaves-de-para/', handler: ChavesDePara.insert},
+    { method: 'put', path: '/bx/chaves-de-para/', handler: ChavesDePara.update},
 ]
 
 for (const route of routes) {

@@ -7,13 +7,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc --build && tsc-alias",
     "start": "node ./dist/index.js",
-    "set:local": "npm install -g npm ts-node typescript nodemon && npm install",
+    "set:local": "npm install -g npm@latest ts-node typescript nodemon && npm install",
     "dev": "nodemon -r tsconfig-paths/register",
     "migration:create": "npx mikro-orm migration:create",
     "migration:up": "npx mikro-orm migration:up",
     "migration:down": "npx mikro-orm migration:down",
     "schema:update": "npx mikro-orm schema:update --run",
-    "migrate": "npm run migration:create && npm run migration:up && npm run schema:update"
+    "schema:drop": "npx mikro-orm schema:drop --run",
+    "migrate": "npm run migration:create && npm run migration:up"
   },
   "keywords": [],
   "author": "",
@@ -44,3 +45,4 @@
     "typescript": "^5.9.2"
   }
 }
+

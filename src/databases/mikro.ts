@@ -1,15 +1,16 @@
-import { MikroORM, RequestContext } from '@mikro-orm/core';
+import {  MikroORM, RequestContext } from '@mikro-orm/core';
 import { MySqlDriver } from '@mikro-orm/mysql';
 import { RequestHandler } from 'express';
 
 // Variavel de instancia 
 let orm: MikroORM<MySqlDriver>;
 const {
-  MYSQL_NAME,
-  MYSQL_USER,
-  MYSQL_PASSWORD, 
-  MYSQL_HOST, 
-  MYSQL_PORT
+    MYSQL_NAME,
+    MYSQL_USER,
+    MYSQL_PASSWORD,
+    MYSQL_HOST,
+
+    MYSQL_PORT
 } = process.env
 
 // Objeto sem tipo para config 
@@ -43,8 +44,8 @@ export async function initORM() {
  * A middleware for Express that creates a request-specific context.
  * This is the crucial part for preventing requests from interfering with each other.
  */
-export const ormMiddleware: RequestHandler = (req:request, res:response, next) => {
-    console.log("Called:",req.path, "with:",req.method)
+export const ormMiddleware: RequestHandler = (req: request, res: response, next) => {
+    console.log("Called:", req.path, "with:", req.method)
     // The RequestContext helper creates a new EntityManager fork for each request.
     // This is the correct way to handle request isolation.
     RequestContext.create(orm.em, () => {

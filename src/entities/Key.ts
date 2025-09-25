@@ -6,12 +6,11 @@ export class Key {
     @PrimaryKey({ type: 'integer', autoincrement: true })
     id!: number;
 
-    @Property({ length: 20, unique: true})
+    @Property({type: 'string',  length: 20, unique: true})
     codigo!: string;
 
     @Property({ length: 60 })
     descricao!: string;
 
-    @OneToMany(() => KeysFromTo, c => c.codigo_id)
     keysFromTo = new Collection<KeysFromTo>(this);
 }
