@@ -3,6 +3,7 @@ const router = Router()
 
 /* -----import controllers----- */
 
+import EtapasProjetos from '@/controllers/EtapasProjetos'
 import Chaves from '@/controllers/Chaves'
 import ChavesDePara from '@/controllers/ChavesDePara'
 import Authentication from "@/controllers/Authentication";
@@ -23,6 +24,9 @@ const routes: Route[] = [
     { method: 'post', path: '/bx/chaves-de-para/', handler: ChavesDePara.insert},
     { method: 'put', path: '/bx/chaves-de-para/single/', handler: ChavesDePara.update},
     { method: 'delete', path: '/bx/chaves-de-para/single/:chaveDeParaId', handler: ChavesDePara.delete},
+
+    //Projetos 
+    { method: 'get', path: '/bx/projetos-etapas/', handler: EtapasProjetos.get},
 ]
 
 for (const route of routes) {

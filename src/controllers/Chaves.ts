@@ -25,7 +25,7 @@ export default class Chaves {
                 }
             })
         }
-        res.status(200).json({ bx_chave: resChave, sucess: true })
+        res.status(200).json({ bx_chave: resChave, success: true })
         return
     }
 
@@ -38,7 +38,7 @@ export default class Chaves {
         )
 
         await global.em.persistAndFlush(key);
-        res.status(201).json({ sucess: true })
+        res.status(201).json({ success: true })
         return
     }
 
@@ -49,7 +49,7 @@ export default class Chaves {
             descricao: req.body.descricao
         });
 
-        res.status(201).json({ sucess: true })
+        res.status(201).json({ success: true })
         return
     }
 }

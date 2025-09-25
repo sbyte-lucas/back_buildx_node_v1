@@ -1,4 +1,5 @@
 import { EntityManager } from '@mikro-orm/core'
+import { MySqlDriver } from '@mikro-orm/mysql';
 import { RequestHandler, Request, Response } from 'express'
 
 declare global {
