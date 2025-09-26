@@ -478,6 +478,56 @@
       "name": "bx_itens_etapas",
       "indexes": [
         {
+          "columnNames": [
+            "projeto"
+          ],
+          "composite": false,
+          "keyName": "bx_itens_etapas_projeto_index",
+          "constraint": false,
+          "primary": false,
+          "unique": false
+        },
+        {
+          "columnNames": [
+            "it_codigo_id"
+          ],
+          "composite": false,
+          "keyName": "bx_itens_etapas_it_codigo_id_index",
+          "constraint": false,
+          "primary": false,
+          "unique": false
+        },
+        {
+          "columnNames": [
+            "etapa"
+          ],
+          "composite": false,
+          "keyName": "bx_itens_etapas_etapa_index",
+          "constraint": false,
+          "primary": false,
+          "unique": false
+        },
+        {
+          "columnNames": [
+            "fase"
+          ],
+          "composite": false,
+          "keyName": "bx_itens_etapas_fase_index",
+          "constraint": false,
+          "primary": false,
+          "unique": false
+        },
+        {
+          "columnNames": [
+            "revisao"
+          ],
+          "composite": false,
+          "keyName": "bx_itens_etapas_revisao_index",
+          "constraint": false,
+          "primary": false,
+          "unique": false
+        },
+        {
           "keyName": "bx_itens_etapas_keys",
           "columnNames": [
             "projeto",
@@ -724,6 +774,46 @@
       },
       "name": "bx_projetos_etapas",
       "indexes": [
+        {
+          "columnNames": [
+            "projeto"
+          ],
+          "composite": false,
+          "keyName": "bx_projetos_etapas_projeto_index",
+          "constraint": false,
+          "primary": false,
+          "unique": false
+        },
+        {
+          "columnNames": [
+            "fase"
+          ],
+          "composite": false,
+          "keyName": "bx_projetos_etapas_fase_index",
+          "constraint": false,
+          "primary": false,
+          "unique": false
+        },
+        {
+          "columnNames": [
+            "etapa"
+          ],
+          "composite": false,
+          "keyName": "bx_projetos_etapas_etapa_index",
+          "constraint": false,
+          "primary": false,
+          "unique": false
+        },
+        {
+          "columnNames": [
+            "revisao"
+          ],
+          "composite": false,
+          "keyName": "bx_projetos_etapas_revisao_index",
+          "constraint": false,
+          "primary": false,
+          "unique": false
+        },
         {
           "keyName": "bx_projetos_etapas_projeto_etapa_fase_revisao",
           "columnNames": [

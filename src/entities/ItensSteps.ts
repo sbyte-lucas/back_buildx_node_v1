@@ -9,23 +9,23 @@ export class ItensSteps {
   @PrimaryKey({ type: 'integer', autoincrement: true })
   chave_composta!: number;
 
-  @Property({length: 31})
+  @Property({length: 31, index:true})
   projeto!: string;
 
   // @OneToOne(ErpItem, () => chave_composta)
-  @Property({length: 32 })
+  @Property({length: 32, index:true })
   it_codigo_id!: string;
 
-  @Property({length: 15})
+  @Property({length: 15, index:true})
   etapa!: string;
 
-  @Property({length: 15})
+  @Property({length: 15, index:true})
   fase!: string;
 
   @Property({type: "integer"})
   qtd_marcas!: number;
 
-  @Property({type: "integer"})
+  @Property({type: "integer", index:true})
   revisao!: number;
 
   @Property({type: TinyIntType, length: 1 })

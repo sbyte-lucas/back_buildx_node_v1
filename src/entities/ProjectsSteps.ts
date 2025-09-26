@@ -7,24 +7,26 @@ export class ProjectsSteps {
   @PrimaryKey({ type: 'integer', autoincrement: true })
   chave_composta!: number;
 
-  @Property({ length: 31 })
+  @Property({ length: 31, index:true })
   projeto!: string;
 
   @Property({ length: 50, nullable: true, default: null })
   cliente!: string;
 
-  @Property({ length: 15, nullable: true, default: null })
+  @Property({ length: 15, nullable: true, default: null, index:true })
   fase!: string;
 
-  @Property({ length: 15 })
+  @Property({ length: 15, index:true })
   etapa!: string;
 
   @Property({ type: TinyIntType, length: 1 })
   fim!: number;
 
-  @Property({ type: 'integer' })
+  @Property({ type: 'integer', index:true })
   revisao!: number ;
 
   @Property({ type: TinyIntType, length: 1 })
   confirmado!: number;
+
+  qtd_marcas?:number;
 }
